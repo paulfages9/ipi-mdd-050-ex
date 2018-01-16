@@ -1,5 +1,6 @@
 package com.ipiecoles.java.mdd050.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.ipiecoles.java.mdd050.exception.TechnicienException;
 import org.joda.time.LocalDate;
 
@@ -12,6 +13,8 @@ import java.util.stream.Collectors;
 
 @Entity
 public class Manager extends Employe {
+
+	@JsonIgnoreProperties("manager") //ignorer la propriété manager quand serialize cette propriété manager (evite recursivité infinie)
 
 	@OneToMany(mappedBy = "manager")
 	private Set<Technicien> equipe = new HashSet<>();

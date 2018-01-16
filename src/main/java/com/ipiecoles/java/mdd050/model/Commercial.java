@@ -15,7 +15,11 @@ public class Commercial extends Employe {
 
 	private Integer performance;
 
-	public Commercial() {
+	public Commercial () {
+
+	}
+
+	public Commercial(String nom, String prenom, String matricule, java.time.LocalDate dateEmbauche, Double salaire, Double caAnnuel) {
 		
 	}
 	

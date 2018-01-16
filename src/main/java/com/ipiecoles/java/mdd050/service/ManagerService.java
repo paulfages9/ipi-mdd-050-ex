@@ -24,4 +24,20 @@ public class ManagerService {
     public Technicien addTechniciens(Long idManager, String matricule) {
         return null;
     }
+
+    public void deleteTechnicien(Long idmanager, Long idtechnicien) {
+        Manager m = managerRepository.findOne(idmanager);
+        if (m == null) {
+            throw new EntityNotFoundException("Le manager d'identifiant " + idmanager + "n'existe pas");
+        }
+
+        Technicien t = technicienRepository.findOne(idtechnicien);
+        if (t == null) {
+            throw new EntityNotFoundException("Le technicien d'identifiant " + idtechnicien + "n'existe pas");
+        }
+
+        //Delier le technicien du manager
+        m.getEquipe().remove(t);
+        managerRepository.save(m);
+    }
 }
